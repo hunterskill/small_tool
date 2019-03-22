@@ -4,17 +4,14 @@
 #判断进程是否是活动的
 
 import os
-cmd='ps aux | grep monitor.py'
+cmd='ps aux | grep LDAPConvert.jar'
 pro=os.popen(cmd).read()
-processName='LDAPConvert.jar'
-for line in pro.splitlines():
- print(line)
- if processName in line:
-     print('在运行')
-
+processName = '/root/tools/LDAPConvert.jar'
+if processName in pro:
+    print('在运行')
 else:
     print('没运行')
-    cmd='java -jar LDAPConvert.jar > LDAPConvert.log &'
+    cmd='java -jar /root/tools/LDAPConvert.jar > LDAPConvert.log &'
 #    cmd='cd /'
     r=os.system(cmd)
     print(r)
